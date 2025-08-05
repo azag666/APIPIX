@@ -349,9 +349,12 @@ def verificar_pix(user_id):
     return jsonify({"message": f"API '{api_type}' não suportada para consulta."}), 400
 
 
-# Inicializa o banco de dados antes de iniciar o servidor
-# No Vercel, isso será executado pelo vercel-build.sh
-if __name__ == '__main__':
-    if not os.path.exists(DATABASE):
-        init_db()
-    app.run(debug=True)
+# Inicializa o banco de dados se ele não existir
+# Isso garante que as tabelas sejam criadas na primeira execução
+# no ambiente do Vercel, onde o sistema de arquivos é efêmero.
+if not os.path.exists(DATABASE):
+    init_db()
+
+# Para execução local, se necessário:
+# if __name__ == '__main__':
+#     app.run(debug=True)
