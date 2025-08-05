@@ -1,3 +1,4 @@
-Flask
+lask
 requests
 Flask-Cors
+psycopg2-binary
