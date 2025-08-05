@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 # Importa as bibliotecas necessárias
 import sqlite3
@@ -56,7 +55,7 @@ def init_db():
                 auth_token TEXT NOT NULL UNIQUE
             )
         """)
-        # Tabela de APIs, vinculada ao usuário
+        # Tabela de APIs com foreign key para o usuário
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS apis (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
